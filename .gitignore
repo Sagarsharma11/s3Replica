@@ -1,0 +1,13 @@
+# Dependency directories
+node_modules/
+
+# Environment variables file
+.env
+
+# Uploaded files directory (if not already excluded in .gitignore)
+/uploads/
+
+# IDE or editor specific files
+.vscode/
+
+
