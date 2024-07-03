@@ -1,8 +1,9 @@
-import mongoose from "mongoose"
+import mongoose from 'mongoose';
 
 const bucketSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  userId: { type: String, required: true },
+  name: { type: String, required: true, unique: false },
+  userId: { type: String, required: true }
 });
 
-export const Bucket = mongoose.model('Bucket', bucketSchema);
+const Bucket = mongoose.model('Bucket', bucketSchema);
+export default Bucket;

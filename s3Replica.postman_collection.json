@@ -1,0 +1,232 @@
+{
+	"info": {
+		"_postman_id": "d0e3bcd4-c598-4fd9-b8ed-c5a6e6dcc5a5",
+		"name": "s3Replica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30668877"
+	},
+	"item": [
+		{
+			"name": "bucket",
+			"item": [
+				{
+					"name": "add bucket",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"bucket2\",\r\n  \"userId\": \"66853f16bd85aae22fb4f54b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/buckets",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"buckets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list bucket",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/buckets/66853f16bd85aae22fb4f54b",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"buckets",
+								"66853f16bd85aae22fb4f54b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "files",
+			"item": [
+				{
+					"name": "upload",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"bucket2\",\r\n  \"userId\": \"66853f16bd85aae22fb4f54b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/files",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"files"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get file",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"bucket2\",\r\n  \"userId\": \"66853f16bd85aae22fb4f54b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/files/668544569cac714d4dbc6161",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"files",
+								"668544569cac714d4dbc6161"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list files",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"bucket2\",\r\n  \"userId\": \"66853f16bd85aae22fb4f54b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/files/668544569cac714d4dbc6161",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"files",
+								"668544569cac714d4dbc6161"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"sagar\",\r\n    \"password\":\"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/users/register",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
