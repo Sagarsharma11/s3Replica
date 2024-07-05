@@ -1,14 +1,28 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "File and Bucket API",
+    "title": "S3 Replica",
     "version": "1.0.0",
     "description": "API for managing files and buckets"
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
   },
   "paths": {
     "/buckets": {
       "post": {
         "summary": "Create a new bucket",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -43,6 +57,11 @@
     "/buckets/{userId}": {
       "get": {
         "summary": "List all buckets for a user",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "userId",
@@ -63,9 +82,88 @@
         }
       }
     },
+    "/buckets/{id}": {
+      "put": {
+        "summary": "Update the bucket name",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "newName": {
+                    "type": "string"
+                  }
+                },
+                "required": ["newName"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Bucket name updated successfully"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/buckets/{id}": {
+      "delete": {
+        "summary": "Delete the bucket with whole data recursively",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Bucket deleted successfully"
+          },
+          "404": {
+            "description": "Bucket not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
     "/files": {
       "post": {
         "summary": "Upload a file",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "multipart/form-data": {
@@ -89,6 +187,9 @@
           "201": {
             "description": "File uploaded successfully"
           },
+          "404": {
+            "description": "Bucket not found"
+          },
           "500": {
             "description": "Server error"
           }
@@ -98,6 +199,11 @@
     "/files/{id}": {
       "get": {
         "summary": "Get a file",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -124,6 +230,11 @@
     "/files/bucket/{bucketId}": {
       "get": {
         "summary": "List all files in a bucket",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "bucketId",
@@ -135,8 +246,39 @@
           }
         ],
         "responses": {
-          "200": {
+          "201": {
             "description": "Files listed successfully"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/files/{id}": {
+      "delete": {
+        "summary": "Delete a file",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "File deleted successfully"
+          },
+          "404": {
+            "description": "File not found"
           },
           "500": {
             "description": "Server error"
