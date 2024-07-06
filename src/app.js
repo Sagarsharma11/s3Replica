@@ -6,12 +6,7 @@ const app = express();
 
 app.use(
   cors({
-    // origin: process.env.CORS_ORIGIN,
-    origin: [
-      "https://portal.hellomentor.online",
-      "http://localhost:3000",
-      "http://postlogin-dev-2138289373.ap-south-1.elb.amazonaws.com",
-    ],
+    origin: "*",
     credentials: true,
   })
 );

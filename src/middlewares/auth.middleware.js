@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-export const protect = (req, res, next) => {
+const protect = (req, res, next) => {
   let token;
 
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
@@ -19,3 +19,5 @@ export const protect = (req, res, next) => {
     res.status(401).json({ message: 'Not authorized' });
   }
 };
+
+export {protect}
