@@ -34,7 +34,6 @@ app.get("/", (_, res) => {
 });
 
 // router import
-// router import
 import bucketRoutes from "./routes/bucket.route.js";
 import fileRoutes from "./routes/file.route.js";
 import swaggerUi from "swagger-ui-express";
@@ -45,6 +44,5 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use("/buckets", bucketRoutes);
 app.use("/files", fileRoutes);
 app.use('/users', userRoutes);
-// app.use("/health", healthCheckRouter);
 
 export { app };
